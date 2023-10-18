@@ -85,13 +85,16 @@ int _printf(const char *format, ...)
 }
 int _pow(int x, int y)
 {
+	int fin = 1, s;
+
 	if (y < 0)
 	{
 		return (-1);
 	}
-	if (y == 0)
+
+	for (s = 0; s < y; s++)
 	{
-		return (1);
+		fin *= x;
 	}
-	return (x * _pow(x, y - 1));
+	return(fin);
 }
