@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 
 				write(1, &w, 1);
 				numchar++;
-			{
+			}
 			else if (format[l] == 'd' || format[l] == 'i')
 			{
 				int x = va_arg(slist, int);
