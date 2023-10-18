@@ -59,10 +59,10 @@ int _printf(const char *format, ...)
 				}
 				for (i = size - 1; i >= 0; i--)
 				{
-					char num = '0' + (x / _pow(10, i));
+					char num = '0' + (x / pow(10, i));
 
 					write(1, &num, 1);
-					x %= (int)_pow(10, i);
+					x %= (int)pow(10, i);
 				}
 			}
 			else if (format[l] == 's')
@@ -82,16 +82,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(slist);
 	return (numchar);
-}
-int _pow(int x, int y)
-{
-	if (y < 0)
-	{
-		return (-1);
-	}
-	if (y == 0)
-	{
-		return (1);
-	}
-	return (x * _pow(x, y - 1));
 }
