@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 	{
-		exit(1);
+		return (-1);
 	}
 	while (format[l] != '\0')
 	{
@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (format[l] == '\0')
 			{
-				return (-1);
+				break;
 			}
 			if (format[l] == '%')
 			{
@@ -59,10 +59,10 @@ int _printf(const char *format, ...)
 				}
 				for (i = size - 1; i >= 0; i--)
 				{
-					char num = '0' + (x / pow(10, i));
+					char num = '0' + (x / _pow(10, i));
 
 					write(1, &num, 1);
-					x %= (int)pow(10, i);
+					x %= (int)_pow(10, i);
 				}
 			}
 			else if (format[l] == 's')
@@ -75,11 +75,23 @@ int _printf(const char *format, ...)
 					i++;
 				}
 				write(1, y, i);
-				numchar++;
+				numchar =+ i;
 			}
 		}
 		format++;
 	}
 	va_end(slist);
 	return (numchar);
+}
+int _pow(int x, int y)
+{
+	if (y < 0)
+	{
+		return (-1);
+	}
+	if (y == 0)
+	{
+		return (1);
+	}
+	return (x * _pow(x, y - 1));
 }
