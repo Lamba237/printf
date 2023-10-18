@@ -75,7 +75,7 @@ int _printf(const char *format, ...)
 					i++;
 				}
 				write(1, y, i);
-				numchar =+ i;
+				numchar += i;
 			}
 		}
 		format++;
